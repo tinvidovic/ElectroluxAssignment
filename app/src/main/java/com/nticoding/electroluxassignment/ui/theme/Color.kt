@@ -30,6 +30,9 @@ private interface Colors {
     // Content
     val contentPrimary: Color
     val contentSecondary: Color
+
+    // Dividers
+    val divider: Color
 }
 
 /**
@@ -45,6 +48,9 @@ private object LightColors : Colors {
     // Content
     override val contentPrimary = carbon
     override val contentSecondary = dugong
+
+    // Dividers
+    override val divider: Color = whiteSmoke
 }
 
 /**
@@ -60,6 +66,8 @@ private object DarkColors : Colors {
     // Content
     override val contentPrimary = white
     override val contentSecondary = quicksilver
+
+    override val divider: Color = whiteSmoke
 }
 
 /**
@@ -75,15 +83,19 @@ class ColorScheme(
     container: Color,
     contentPrimary: Color,
     contentSecondary: Color,
-) {
+    divider: Color,
+) : Colors {
 
-    var background by mutableStateOf(background, structuralEqualityPolicy())
+    override var background by mutableStateOf(background, structuralEqualityPolicy())
         private set
-    var container by mutableStateOf(container, structuralEqualityPolicy())
+    override var container by mutableStateOf(container, structuralEqualityPolicy())
         private set
-    var contentPrimary by mutableStateOf(contentPrimary, structuralEqualityPolicy())
+    override var contentPrimary by mutableStateOf(contentPrimary, structuralEqualityPolicy())
         private set
-    var contentSecondary by mutableStateOf(contentSecondary, structuralEqualityPolicy())
+    override var contentSecondary by mutableStateOf(contentSecondary, structuralEqualityPolicy())
+        private set
+
+    override var divider by mutableStateOf(divider, structuralEqualityPolicy())
         private set
 
     /** Returns a copy of this [ColorScheme], optionally overriding some of the values. */
@@ -92,12 +104,14 @@ class ColorScheme(
         container: Color = this.container,
         contentPrimary: Color = this.contentPrimary,
         contentSecondary: Color = this.contentSecondary,
+        divider: Color = this.divider
     ): ColorScheme =
         ColorScheme(
             background = background,
             container = container,
             contentPrimary = contentPrimary,
             contentSecondary = contentSecondary,
+            divider = divider
         )
 }
 
@@ -109,12 +123,14 @@ fun lightColorScheme(
     container: Color = LightColors.container,
     contentPrimary: Color = LightColors.contentPrimary,
     contentSecondary: Color = LightColors.contentSecondary,
+    divider: Color = LightColors.divider
 ): ColorScheme =
     ColorScheme(
         background = background,
         container = container,
         contentPrimary = contentPrimary,
         contentSecondary = contentSecondary,
+        divider = divider
     )
 
 /**
@@ -125,12 +141,14 @@ fun darkColorScheme(
     container: Color = DarkColors.container,
     contentPrimary: Color = DarkColors.contentPrimary,
     contentSecondary: Color = DarkColors.contentSecondary,
+    divider: Color = DarkColors.divider
 ): ColorScheme =
     ColorScheme(
         background = background,
         container = container,
         contentPrimary = contentPrimary,
         contentSecondary = contentSecondary,
+        divider = divider
     )
 
 /**
