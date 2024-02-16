@@ -8,7 +8,9 @@ object Compose {
 
     const val composeGraphics = "androidx.compose.ui:ui-graphics"
 
-    const val composeUiTooling = "androidx.compose.ui:ui-tooling-preview"
+    const val composeUiTooling = "androidx.compose.ui:ui-tooling"
+
+    const val composeUiToolingPreview = "androidx.compose.ui:ui-tooling-preview-android"
 
     const val composeFoundations = "androidx.compose.foundation:foundation"
 

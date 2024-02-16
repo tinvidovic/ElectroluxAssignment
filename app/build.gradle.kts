@@ -58,6 +58,7 @@ dependencies {
     implementation(platform(Compose.composeBoM))
     implementation(Compose.composeUi)
     implementation(Compose.composeGraphics)
-    implementation(Compose.composeUiTooling)
     implementation(Compose.composeFoundations)
+    implementation(Compose.composeUiToolingPreview)
+    debugImplementation(Compose.composeUiTooling)
 }
