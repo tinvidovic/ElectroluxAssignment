@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">ElectroluxAssignment</string>
+
+    <string name="cotton_eco_program_title">Cotton Eco</string>
+    <string name="cotton_eco_program_description">Cupboard-dries cottons with maximum energy saving.</string>
+
+    <string name="cottons_program_title">Cottons</string>
+    <string name="cottons_program_description">100% cotton fabrics.</string>
+
+    <string name="synthetics_program_title">Synthetics</string>
+    <string name="synthetics_program_description">For a mix of mostly synthetic fabrics, like polyester, or polyamide. </string>
+
+    <string name="mixed_plus_program_title">Mixed+</string>
+    <string name="mixed_plus_program_description">Cotton, cotton-synthetic blends, and synthetics that don’t need ironing.</string>
+
+    <string name="delicates_program_title">Delicates</string>
+    <string name="delicates_program_description">Viscose, rayon, acrylic, and other blends. </string>
+
+    <string name="sports_program_title">Sports</string>
+    <string name="sports_program_description">Athletic clothes made of synthetics like polyester, elastane, or polyamide.</string>
+
+    <string name="bed_linen_extra_large_program_title">Bed linen XL</string>
+    <string name="bed_linen_extra_large_program_description">Up to 2 single and 1 double sets of bedding. </string>
 </resources>
