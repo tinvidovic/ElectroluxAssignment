@@ -1,6 +1,6 @@
 package com.nticoding.electroluxassignment.domain.repository
 
-import com.nticoding.electroluxassignment.domain.model.Program
+import com.nticoding.electroluxassignment.data.entity.Program
 import kotlinx.coroutines.flow.Flow
 
 interface ProgramRepository {

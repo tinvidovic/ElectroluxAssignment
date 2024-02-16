@@ -1,4 +1,4 @@
-package com.nticoding.electroluxassignment.domain.model
+package com.nticoding.electroluxassignment.data.entity
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
