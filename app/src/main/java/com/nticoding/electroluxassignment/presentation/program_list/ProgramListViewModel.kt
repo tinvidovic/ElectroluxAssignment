@@ -1,19 +1,15 @@
 package com.nticoding.electroluxassignment.presentation.program_list
 
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi
 import androidx.lifecycle.viewmodel.compose.saveable
-import com.nticoding.electroluxassignment.domain.mapper.toSelectableOption
-import com.nticoding.electroluxassignment.domain.model.SelectableOption
 import com.nticoding.electroluxassignment.domain.repository.ProgramRepository
+import com.nticoding.electroluxassignment.domain.use_case.GetSelectableOptionsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,8 +20,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ProgramListViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
-    private val programRepository: ProgramRepository
-): ViewModel() {
+    private val getSelectableOptionsUseCase: GetSelectableOptionsUseCase
+) : ViewModel() {
 
     /**
      * The [screen] [ProgramListScreen] [state] [ProgramListState]
@@ -72,12 +68,9 @@ class ProgramListViewModel @Inject constructor(
 
         viewModelScope.launch {
             // For each emission update the state
-            programRepository.getAllPrograms().collectLatest {programs ->
-
+            getSelectableOptionsUseCase.invoke().collectLatest {
                 state = state.copy(
-                    selectableOptions = programs.map {
-                        it.toSelectableOption()
-                    }
+                    selectableOptions = it
                 )
             }
         }

@@ -2,6 +2,7 @@ package com.nticoding.electroluxassignment.di
 
 import com.nticoding.electroluxassignment.data.ProgramDataStore
 import com.nticoding.electroluxassignment.data.repository.ProgramRepository
+import com.nticoding.electroluxassignment.domain.use_case.GetSelectableOptionsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,6 +23,17 @@ object AppModule {
 
         return ProgramRepository(
             programDataStore = ProgramDataStore()
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetSelectableOptionsUseCase(
+        programRepository: com.nticoding.electroluxassignment.domain.repository.ProgramRepository
+    ): GetSelectableOptionsUseCase {
+
+        return GetSelectableOptionsUseCase(
+            programRepository = programRepository
         )
     }
 }
