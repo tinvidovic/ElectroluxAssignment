@@ -3,8 +3,11 @@ package com.nticoding.electroluxassignment.presentation.program_list
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi
+import androidx.lifecycle.viewmodel.compose.saveable
 import com.nticoding.electroluxassignment.domain.mapper.toSelectableOption
 import com.nticoding.electroluxassignment.domain.model.SelectableOption
 import com.nticoding.electroluxassignment.domain.repository.ProgramRepository
@@ -20,19 +23,25 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class ProgramListViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle,
     private val programRepository: ProgramRepository
 ): ViewModel() {
 
     /**
      * The [screen] [ProgramListScreen] [state] [ProgramListState]
      */
-    var state by mutableStateOf(ProgramListState())
-        private set
+    @OptIn(SavedStateHandleSaveableApi::class)
+    var state: ProgramListState by savedStateHandle.saveable {
+        mutableStateOf(ProgramListState())
+    }
 
     init {
 
         // Load the programs when initializing
-        loadPrograms()
+        if (state.selectableOptions.isEmpty()) {
+            // Load only when empty, otherwise use the saved Bundle
+            loadPrograms()
+        }
     }
 
     /**

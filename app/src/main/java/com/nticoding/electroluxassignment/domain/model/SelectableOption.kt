@@ -1,8 +1,10 @@
 package com.nticoding.electroluxassignment.domain.model
 
+import android.os.Parcelable
 import androidx.annotation.DrawableRes
-import androidx.annotation.IdRes
 import com.nticoding.electroluxassignment.util.UIText
+import kotlinx.parcelize.Parcelize
+import java.io.Serializable
 
 /**
  * A washing machine program
@@ -16,4 +18,4 @@ data class SelectableOption(
     val description: UIText,
     @DrawableRes val iconResId: Int,
     val selected: Boolean = false
-)
+): Serializable
