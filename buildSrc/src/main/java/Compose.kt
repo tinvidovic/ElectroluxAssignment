@@ -16,4 +16,7 @@ object Compose {
 
     private const val composeActivityVersion = "1.8.2"
     const val composeActivity = "androidx.activity:activity-compose:$composeActivityVersion"
+
+    private const val lifecycleVersion = "2.6.0"
+    const val composeViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion"
 }

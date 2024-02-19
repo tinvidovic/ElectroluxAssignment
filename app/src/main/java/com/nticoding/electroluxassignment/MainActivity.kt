@@ -12,15 +12,25 @@ import com.nticoding.electroluxassignment.data.ProgramDataStore
 import com.nticoding.electroluxassignment.domain.mapper.toSelectableOption
 import com.nticoding.electroluxassignment.presentation.components.SelectableItemList
 import com.nticoding.electroluxassignment.presentation.components.Surface
+import com.nticoding.electroluxassignment.presentation.program_list.ProgramListScreen
 import com.nticoding.electroluxassignment.ui.theme.ElectroluxAssignmentTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
+
             ElectroluxAssignmentTheme {
+                Surface(
+                    onClick = {},
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    ProgramListScreen()
+                }
 
             }
         }

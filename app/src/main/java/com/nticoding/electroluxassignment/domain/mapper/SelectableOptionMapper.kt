@@ -4,13 +4,14 @@ import android.content.Context
 import androidx.core.content.ContextCompat.getString
 import com.nticoding.electroluxassignment.data.entity.Program
 import com.nticoding.electroluxassignment.domain.model.SelectableOption
+import com.nticoding.electroluxassignment.util.UIText
 
 
-fun Program.toSelectableOption(context: Context, asSelected: Boolean = false): SelectableOption {
+fun Program.toSelectableOption(asSelected: Boolean = false): SelectableOption {
 
     return SelectableOption(
-        title = getString(context, title),
-        description = getString(context, description),
+        title = UIText.StringResource(title),
+        description = UIText.StringResource(description),
         iconResId = iconResId,
         selected = asSelected
     )

@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -51,14 +53,23 @@ android {
 
 dependencies {
 
+    // Core
     implementation(AndroidX.coreKtx)
-    implementation(Compose.composeActivity)
+    implementation(AndroidX.lifecycleViewModel)
 
     // Jetpack Compose
+    implementation(Compose.composeActivity)
     implementation(platform(Compose.composeBoM))
     implementation(Compose.composeUi)
     implementation(Compose.composeGraphics)
     implementation(Compose.composeFoundations)
     implementation(Compose.composeUiToolingPreview)
+    implementation(Compose.composeViewModel)
     debugImplementation(Compose.composeUiTooling)
+
+    // Dagger-Hilt
+    implementation(DaggerHilt.hiltAndroid)
+    kapt(DaggerHilt.hiltCompiler)
+
+
 }

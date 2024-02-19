@@ -14,13 +14,13 @@ class ProgramRepository(
     override suspend fun getAllPrograms(): Flow<List<Program>> = flow {
 
         // First emit an empty list to simulate loading while fetching
-        emptyList<Program>()
+        emit(emptyList())
 
         // Simulate a delay
         delay(SIMULATED_DELAY_MS)
 
         // Returned the result (always successful for simplicity)
-        programDataStore.getAllPrograms()
+        emit(programDataStore.getAllPrograms())
     }
 
     object Constants {

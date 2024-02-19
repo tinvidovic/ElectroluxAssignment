@@ -8,6 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.nticoding.electroluxassignment.R
 import com.nticoding.electroluxassignment.domain.model.SelectableOption
 import com.nticoding.electroluxassignment.ui.theme.ElectroluxAssignmentTheme
+import com.nticoding.electroluxassignment.util.UIText
 
 @Composable
 fun SelectableItemList(
@@ -43,24 +44,24 @@ fun SelectableItemListPreview() {
 
     val selectableOptions = listOf<SelectableOption>(
         SelectableOption(
-            "Cotton",
-            "Cotton description",
+            UIText.DynamicString("Cotton"),
+            UIText.DynamicString("Cotton description"),
             R.drawable.ic_cotton
         ),
         SelectableOption(
-            "Cotton Eco",
-            "Cotton Eco description",
+            UIText.DynamicString("Cotton Eco"),
+            UIText.DynamicString("Cotton Eco description"),
             R.drawable.ic_cotton,
             true
         ),
         SelectableOption(
-            "Synthetics",
-            "Synthetics description",
+            UIText.DynamicString("Synthetics"),
+            UIText.DynamicString("Synthetics description"),
             R.drawable.ic_synthetics
         ),
         SelectableOption(
-            "Sports",
-            "Sports description",
+            UIText.DynamicString("Sports"),
+            UIText.DynamicString("Sports description"),
             R.drawable.ic_cotton
         ),
     )

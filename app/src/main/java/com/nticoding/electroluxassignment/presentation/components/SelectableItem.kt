@@ -9,9 +9,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.currentCompositionLocalContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.nticoding.electroluxassignment.R
 import com.nticoding.electroluxassignment.domain.model.SelectableOption
 import com.nticoding.electroluxassignment.ui.theme.ElectroluxAssignmentTheme
+import com.nticoding.electroluxassignment.util.UIText
 
 @Composable
 fun SelectableItem(
@@ -34,6 +37,8 @@ fun SelectableItem(
         color = color,
         modifier = modifier,
     ) {
+
+        val context = LocalContext.current
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -56,7 +61,7 @@ fun SelectableItem(
                     )
             ) {
                 Text(
-                    text = selectableOption.title,
+                    text = selectableOption.title.asString(context),
                     style = ElectroluxAssignmentTheme.typography.title1,
                     textAlign = TextAlign.Start,
                     color = ElectroluxAssignmentTheme.colorScheme.contentPrimary
@@ -65,7 +70,7 @@ fun SelectableItem(
                 // Simple visibility animation, to show/hide description if selected
                 AnimatedVisibility(visible = selectableOption.selected) {
                     Text(
-                        text = selectableOption.description,
+                        text = selectableOption.description.asString(context),
                         style = ElectroluxAssignmentTheme.typography.body1,
                         textAlign = TextAlign.Start,
                         color = ElectroluxAssignmentTheme.colorScheme.contentSecondary
@@ -95,8 +100,8 @@ fun SelectableItem(
 fun SelectableItemPreview() {
 
     val selectableOption = SelectableOption(
-        "Cotton Eco",
-        "Cupboard-dries cottons with maximum energy saving",
+        UIText.DynamicString("Cotton Eco"),
+        UIText.DynamicString("Cupboard-dries cottons with maximum energy saving"),
         R.drawable.ic_faq
     )
 
