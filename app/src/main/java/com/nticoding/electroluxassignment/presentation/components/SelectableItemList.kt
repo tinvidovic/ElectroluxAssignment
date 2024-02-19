@@ -10,6 +10,13 @@ import com.nticoding.electroluxassignment.domain.model.SelectableOption
 import com.nticoding.electroluxassignment.ui.theme.ElectroluxAssignmentTheme
 import com.nticoding.electroluxassignment.util.UIText
 
+/**
+ * A list of [selectable items] [SelectableItem].
+ * @param selectableOptions The [SelectableOption]s to list
+ * @param onSelectableClicked The callback function called when an item is clicked
+ * @param modifier the [Modifier] to be applied to this selectable item.
+ * @param shape shape of this selectable item.
+ */
 @Composable
 fun SelectableItemList(
     selectableOptions: List<SelectableOption>,

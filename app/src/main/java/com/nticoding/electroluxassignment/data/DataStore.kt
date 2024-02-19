@@ -6,6 +6,9 @@ import com.nticoding.electroluxassignment.data.entity.Program
 import com.nticoding.electroluxassignment.R.drawable as drawRes
 import com.nticoding.electroluxassignment.R.string as strRes
 
+/**
+ * A makeshift data store, simulating the behaviour to allow for dynamic loading of the program data.
+ */
 class ProgramDataStore {
     private val programTable = listOf<Triple<@StringRes Int, @StringRes Int, @DrawableRes Int>>(
         Triple(

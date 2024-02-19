@@ -12,10 +12,19 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.semantics.Role
 import com.nticoding.electroluxassignment.ui.theme.ElectroluxAssignmentTheme
 
+/**
+ * A Surface is a convenience wrapper around the [Box] composable. It allows specifying the onClick
+ * callback, color and shape of the underlying Box.
+ * @param modifier Modifier to be applied to the layout corresponding to the surface
+ * @param onClick The callback called when the surface is clicked
+ * @param enabled Weather the surface should be enabled
+ * @param shape Defines the surface's shape
+ * @param color The background color. Use [Color.Transparent] to have no color.
+ */
 @Composable
 fun Surface(
-    onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null,
     enabled: Boolean = true,
     shape: Shape = RectangleShape,
     color: Color = ElectroluxAssignmentTheme.colorScheme.background,
@@ -32,7 +41,7 @@ fun Surface(
             .clickable(
                 role = Role.Button,
                 enabled = enabled,
-                onClick = onClick
+                onClick = onClick ?: {}
             )
     ) {
         content()
