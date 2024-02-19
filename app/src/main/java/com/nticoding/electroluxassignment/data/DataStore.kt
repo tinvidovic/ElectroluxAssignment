@@ -2,7 +2,7 @@ package com.nticoding.electroluxassignment.data
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import com.nticoding.electroluxassignment.domain.model.Program
+import com.nticoding.electroluxassignment.data.entity.Program
 import com.nticoding.electroluxassignment.R.drawable as drawRes
 import com.nticoding.electroluxassignment.R.string as strRes
 

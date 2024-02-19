@@ -2,7 +2,7 @@ package com.nticoding.electroluxassignment.data.repository
 
 import com.nticoding.electroluxassignment.data.ProgramDataStore
 import com.nticoding.electroluxassignment.data.repository.ProgramRepository.Constants.SIMULATED_DELAY_MS
-import com.nticoding.electroluxassignment.domain.model.Program
+import com.nticoding.electroluxassignment.data.entity.Program
 import com.nticoding.electroluxassignment.domain.repository.ProgramRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow

@@ -1,6 +1,7 @@
 package com.nticoding.electroluxassignment.presentation.components
 
 import android.content.res.Configuration
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -24,7 +25,6 @@ fun SelectableItem(
     selectableOption: SelectableOption,
     onSelected: () -> Unit,
     modifier: Modifier = Modifier,
-    selected: Boolean = false,
     shape: CornerBasedShape = ElectroluxAssignmentTheme.shapes.small,
     color: Color = ElectroluxAssignmentTheme.colorScheme.container
 ) {
@@ -61,24 +61,30 @@ fun SelectableItem(
                     textAlign = TextAlign.Start,
                     color = ElectroluxAssignmentTheme.colorScheme.contentPrimary
                 )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = selectableOption.description,
-                    style = ElectroluxAssignmentTheme.typography.body1,
-                    textAlign = TextAlign.Start,
-                    color = ElectroluxAssignmentTheme.colorScheme.contentSecondary
-                )
+
+                // Simple visibility animation, to show/hide description if selected
+                AnimatedVisibility(visible = selectableOption.selected) {
+                    Text(
+                        text = selectableOption.description,
+                        style = ElectroluxAssignmentTheme.typography.body1,
+                        textAlign = TextAlign.Start,
+                        color = ElectroluxAssignmentTheme.colorScheme.contentSecondary
+                    )
+                }
             }
 
-            Icon(
-                painter = painterResource(id = R.drawable.ic_check),
-                contentDescription = null,
-                modifier = Modifier
-                    .padding(
-                        horizontal = 16.dp,
-                        vertical = 16.dp
-                    )
-            )
+            // Display checked icon if selected
+            if (selectableOption.selected) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_check),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(
+                            horizontal = 16.dp,
+                            vertical = 16.dp
+                        )
+                )
+            }
         }
     }
 }
