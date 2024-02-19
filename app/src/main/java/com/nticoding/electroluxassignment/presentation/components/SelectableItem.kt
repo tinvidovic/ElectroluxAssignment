@@ -23,6 +23,14 @@ import com.nticoding.electroluxassignment.domain.model.SelectableOption
 import com.nticoding.electroluxassignment.ui.theme.ElectroluxAssignmentTheme
 import com.nticoding.electroluxassignment.util.UIText
 
+/**
+ *  A single selectable item containing an icon, title and optional description.
+ * @param selectableOption The [SelectableOption] of the item
+ * @param onSelected The callback function called when the item is clicked
+ * @param modifier the [Modifier] to be applied to this selectable item.
+ * @param shape shape of this selectable item.
+ * @param color color of this selectable item.
+ */
 @Composable
 fun SelectableItem(
     selectableOption: SelectableOption,
@@ -32,7 +40,7 @@ fun SelectableItem(
     color: Color = ElectroluxAssignmentTheme.colorScheme.container
 ) {
     Surface(
-        onClick = { onSelected() },
+        onClick = { onSelected() }, // Make the entire surface clickable
         shape = shape,
         color = color,
         modifier = modifier,
@@ -43,6 +51,8 @@ fun SelectableItem(
         Row(
             verticalAlignment = Alignment.CenterVertically,
         ) {
+
+            // Leading Icon
             Icon(
                 painter = painterResource(id = selectableOption.iconResId),
                 contentDescription = null,
@@ -60,6 +70,7 @@ fun SelectableItem(
                         vertical = 16.dp
                     )
             ) {
+                // Title text
                 Text(
                     text = selectableOption.title.asString(context),
                     style = ElectroluxAssignmentTheme.typography.title1,
@@ -67,6 +78,7 @@ fun SelectableItem(
                     color = ElectroluxAssignmentTheme.colorScheme.contentPrimary
                 )
 
+                // Description text (visible when selected)
                 // Simple visibility animation, to show/hide description if selected
                 AnimatedVisibility(visible = selectableOption.selected) {
                     Text(

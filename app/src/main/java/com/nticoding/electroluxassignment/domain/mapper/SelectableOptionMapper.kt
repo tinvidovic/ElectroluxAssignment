@@ -7,6 +7,10 @@ import com.nticoding.electroluxassignment.domain.model.SelectableOption
 import com.nticoding.electroluxassignment.util.UIText
 
 
+/**
+ * Maps a [Program] to a [SelectableOption] using the program's resource IDs
+ * @param asSelected Boolean, indicating if the mapped result should be selected
+ */
 fun Program.toSelectableOption(asSelected: Boolean = false): SelectableOption {
 
     return SelectableOption(

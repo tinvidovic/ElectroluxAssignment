@@ -12,6 +12,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.nticoding.electroluxassignment.ui.theme.ElectroluxAssignmentTheme
 import com.nticoding.electroluxassignment.ui.theme.chaosBlack
 
+/**
+ * High level element that displays text
+ * @param text The text to be displayed.
+ * @param modifier [Modifier] to apply to this layout node.
+ * @param color [Color] to apply to the text. If [Color.Unspecified], and [style] has no color set,
+ * this will be [chaosBlack].
+ * @param style Style configuration for the text such as color, font, line height etc.
+ * @param textAlign The alignment of the text within the lines of the paragraph.
+ */
 @Composable
 fun Text(
     text: String,
