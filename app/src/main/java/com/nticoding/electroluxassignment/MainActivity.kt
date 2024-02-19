@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
 
             ElectroluxAssignmentTheme {
                 Surface(
-                    onClick = {},
+                    onClick = null,
                     modifier = Modifier.fillMaxSize()
                 ) {
                     ProgramListScreen()

@@ -2,8 +2,10 @@ package com.nticoding.electroluxassignment.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -31,18 +33,33 @@ fun Surface(
     content: @Composable () -> Unit,
 ) {
 
-    Box(
-        modifier = modifier
+    val boxModifier = if (onClick != null) {
+        modifier
             .background(
                 shape = shape,
                 color = color
             )
             .clip(shape)
+            // Make it clickable when a callback is provided only
             .clickable(
-                role = Role.Button,
                 enabled = enabled,
-                onClick = onClick ?: {}
+                indication = null, // We don't want a ripple effect ever
+                role = Role.Button,
+                interactionSource = remember { MutableInteractionSource() }) {
+                // Perform the onClick
+                onClick()
+            }
+    } else {
+        // No callback provided, create an unclickable surface
+        modifier
+            .background(
+                shape = shape,
+                color = color
             )
+            .clip(shape)
+    }
+    Box(
+        modifier = boxModifier
     ) {
         content()
     }
