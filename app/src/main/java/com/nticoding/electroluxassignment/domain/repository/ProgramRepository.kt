@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 interface ProgramRepository {
 
     suspend fun getAllPrograms(): Flow<List<Program>>
+
 }
