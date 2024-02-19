@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -23,12 +24,22 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
+        }
+        release {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            // NOTE: In actual production app should never use debug signing config
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -70,6 +81,10 @@ dependencies {
     // Dagger-Hilt
     implementation(DaggerHilt.hiltAndroid)
     kapt(DaggerHilt.hiltCompiler)
+
+    // LeakCanary
+    // debugImplementation because LeakCanary should only run in debug builds.
+    debugImplementation(DebugUtils.leakCanary)
 
 
 }

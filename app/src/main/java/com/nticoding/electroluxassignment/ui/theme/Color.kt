@@ -13,6 +13,7 @@ val white: Color = Color(0xFFFFFFFF)
 val whiteSmoke: Color = Color(0xFFF5F5F5)
 val quicksilver: Color = Color(0xFFA6A6A6)
 val dugong: Color = Color(0xFF707070)
+val bauhaus: Color = Color(0xFF404040)
 val carbon: Color = Color(0xFF323333)
 val direWolf: Color = Color(0xFF272727)
 val chaosBlack: Color = Color(0xFF101010)
@@ -67,7 +68,7 @@ private object DarkColors : Colors {
     override val contentPrimary = white
     override val contentSecondary = quicksilver
 
-    override val divider: Color = whiteSmoke
+    override val divider: Color = bauhaus
 }
 
 /**

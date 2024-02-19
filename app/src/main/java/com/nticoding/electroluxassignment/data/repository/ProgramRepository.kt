@@ -25,6 +25,6 @@ class ProgramRepository(
 
     object Constants {
 
-        const val SIMULATED_DELAY_MS = 2000L
+        const val SIMULATED_DELAY_MS = 1000L
     }
 }
