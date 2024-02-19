@@ -19,6 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -47,7 +50,15 @@ fun SelectableItem(
         onClick = { onSelected() }, // Make the entire surface clickable
         shape = shape,
         color = color,
-        modifier = modifier,
+        modifier = modifier
+            .semantics(
+                // Treat descendants as a single component
+                mergeDescendants = true,
+                properties = {
+                    // Make talkback selection aware
+                    this.selected = selectableOption.selected
+                }
+            )
     ) {
 
         val context = LocalContext.current
@@ -89,7 +100,7 @@ fun SelectableItem(
                         text = selectableOption.description.asString(context),
                         style = ElectroluxAssignmentTheme.typography.body1,
                         textAlign = TextAlign.Start,
-                        color = ElectroluxAssignmentTheme.colorScheme.contentSecondary
+                        color = ElectroluxAssignmentTheme.colorScheme.contentSecondary,
                     )
                 }
             }
