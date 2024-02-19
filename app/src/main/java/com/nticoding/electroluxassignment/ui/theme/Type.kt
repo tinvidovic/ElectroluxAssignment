@@ -1,11 +1,14 @@
 package com.nticoding.electroluxassignment.ui.theme
 
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.nticoding.electroluxassignment.R
 import com.nticoding.electroluxassignment.ui.theme.TypographyValues.body1TextStyle
@@ -23,11 +26,11 @@ object TypographyValues {
 
     private val sfProFontFamily = FontFamily(
         Font(
-            resId = R.font.sf_pro,
+            resId = R.font.sf_pro_regular,
             weight = FontWeight(sfProRegularWeight)
         ),
         Font(
-            resId = R.font.sf_pro,
+            resId = R.font.sf_pro_medium,
             weight = FontWeight(sfProMediumWeight)
         ),
     )
@@ -65,4 +68,25 @@ data class Typography internal constructor(
 internal val LocalTypography = staticCompositionLocalOf {
     // Static composition local (types are not expected to change)
     Typography()
+}
+
+
+@Preview
+@Composable
+fun Title1BasicText() {
+
+    BasicText(
+        text = "Hello World!",
+        style = title1TextStyle
+    )
+}
+
+@Preview
+@Composable
+fun Body1BasicText() {
+
+    BasicText(
+        text = "Hello World!",
+        style = body1TextStyle
+    )
 }
