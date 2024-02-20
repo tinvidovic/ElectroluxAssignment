@@ -17,7 +17,7 @@ android {
         versionCode = ProjectConfig.versionCode
         versionName = ProjectConfig.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.nticoding.electroluxassignment.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -60,6 +60,13 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    sourceSets {
+        getByName("main") {
+            java {
+                srcDirs("src\\main\\java", "src\\test\\java")
+            }
+        }
+    }
 }
 
 dependencies {
@@ -86,5 +93,21 @@ dependencies {
     // debugImplementation because LeakCanary should only run in debug builds.
     debugImplementation(DebugUtils.leakCanary)
 
+    // Testing
+    testImplementation(Testing.junit4)
+    testImplementation(Testing.junitAndroidExt)
+    testImplementation(Testing.coroutines)
+    testImplementation(Testing.truth)
+    testImplementation(Testing.composeUiTest)
+    testImplementation(Testing.hiltTesting)
+    testImplementation(Testing.testRunner)
 
+    androidTestImplementation(Testing.junit4)
+    androidTestImplementation(Testing.junitAndroidExt)
+    androidTestImplementation(Testing.coroutines)
+    androidTestImplementation(Testing.truth)
+    androidTestImplementation(Testing.composeUiTest)
+    androidTestImplementation(Testing.hiltTesting)
+    androidTestImplementation(Testing.testRunner)
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.48.1")
 }
