@@ -1,8 +1,6 @@
 package com.nticoding.electroluxassignment.presentation.program_list
 
-import android.os.Parcelable
 import com.nticoding.electroluxassignment.domain.model.SelectableOption
-import kotlinx.parcelize.Parcelize
 import java.io.Serializable
 
 /**

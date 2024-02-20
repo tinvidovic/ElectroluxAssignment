@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.collectLatest
 
 
-
 class GetSelectableOptionsUseCase(
     private val programRepository: ProgramRepository
 ) {

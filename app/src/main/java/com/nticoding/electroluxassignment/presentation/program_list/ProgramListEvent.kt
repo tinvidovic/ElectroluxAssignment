@@ -7,5 +7,5 @@ import com.nticoding.electroluxassignment.domain.model.SelectableOption
  */
 sealed class ProgramListEvent {
 
-    data class OnProgramSelected(val selectableOption: SelectableOption): ProgramListEvent()
+    data class OnProgramSelected(val selectableOption: SelectableOption) : ProgramListEvent()
 }
