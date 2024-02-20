@@ -128,7 +128,7 @@ class SelectableListTest {
             .onNodeWithText(selectable2Description)
             .assertDoesNotExist()
     }
-    
+
     object Constants {
 
         const val selectable1Title = "Test Selectable 1"
