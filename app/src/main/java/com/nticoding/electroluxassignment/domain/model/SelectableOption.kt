@@ -17,5 +17,5 @@ data class SelectableOption(
     val title: UIText,
     val description: UIText,
     @DrawableRes val iconResId: Int,
-    val selected: Boolean = false
+    var selected: Boolean = false
 ): Serializable
