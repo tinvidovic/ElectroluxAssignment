@@ -1,9 +1,7 @@
 package com.nticoding.electroluxassignment.domain.model
 
-import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import com.nticoding.electroluxassignment.util.UIText
-import kotlinx.parcelize.Parcelize
 import java.io.Serializable
 
 /**
@@ -18,4 +16,4 @@ data class SelectableOption(
     val description: UIText,
     @DrawableRes val iconResId: Int,
     var selected: Boolean = false
-): Serializable
+) : Serializable

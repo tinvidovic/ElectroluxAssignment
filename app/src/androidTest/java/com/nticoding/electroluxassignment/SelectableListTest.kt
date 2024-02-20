@@ -2,7 +2,6 @@ package com.nticoding.electroluxassignment
 
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -78,7 +77,7 @@ class SelectableListTest {
                 }
                 SelectableItemList(
                     selectableOptions = selectableOptions.value,
-                    onSelectableClicked = {selectedOption ->
+                    onSelectableClicked = { selectedOption ->
                         selectableOptions.value = selectableOptions.value.map {
                             if (it.title == selectedOption.title) {
                                 it.copy(
