@@ -1,70 +1,68 @@
 package com.nticoding.electroluxassignment.ui.theme
 
-import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalView
-import androidx.core.view.WindowCompat
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.runtime.remember
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
-
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
-)
-
+/**
+ * All values may be set by providing this component with the [colorScheme][ColorScheme],
+ * [shapes][Shapes] and [typography][Typography] attributes. Use this to configure the overall
+ * theme of elements within this ElectroluxAssignmentTheme.
+ *
+ *  Any values that are not set will inherit the current value from the theme, falling back to the
+ *  defaults.
+ *
+ * @param colorScheme The [color scheme][ColorScheme] to be used for this hierarchy
+ * @param typography The [color typography][Typography] to be used for this hierarchy
+ * @param shapes The [shapes][Shapes] to be used for this hierarchy
+ *
+ */
 @Composable
 fun ElectroluxAssignmentTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    colorScheme: ColorScheme = ElectroluxAssignmentTheme.colorScheme,
+    typography: Typography = ElectroluxAssignmentTheme.typography,
+    shapes: Shapes = ElectroluxAssignmentTheme.shapes,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
-        }
+    val isDarkTheme = isSystemInDarkTheme()
+
+    val rememberedColorScheme = remember {
+        // Explicitly creating a new object here so we don't mutate the initial [colorScheme]
+        // provided, and overwrite the values set in it.
+        if (isDarkTheme) darkColorScheme() else lightColorScheme()
     }
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
-    )
+    CompositionLocalProvider(
+        LocalColorScheme provides rememberedColorScheme,
+        LocalTypography provides typography,
+        LocalShapes provides shapes,
+    ) {
+
+        content()
+    }
+}
+
+/**
+ * Contains functions to access the current theme values provided at the call site's position in
+ * the hierarchy.
+ */
+object ElectroluxAssignmentTheme {
+
+    val colorScheme: ColorScheme
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalColorScheme.current
+
+    val typography: Typography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalTypography.current
+
+    val shapes: Shapes
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalShapes.current
 }
